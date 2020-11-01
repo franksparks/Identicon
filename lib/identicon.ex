@@ -42,12 +42,22 @@ defmodule Identicon do
 
   That list is divided into several lists of 3 elements, discarting the last value.
 
-  Finally, `mirror_row` method is referenced to append the values to mirror every row.
+  `mirror_row` method is referenced to append the values to mirror every row.
+
+  Flattening the list of lists, one single list with the 25 values will be returned.
+
+  `Enum.with_index` gets every element in the list and returns a tuple with
+  the element and its index.
   """
-  def build_grid(%Identicon.Image{hex: hex} = _image) do
-    hex
-    |> Enum.chunk_every(3, 3, :discard)
-    |> Enum.map(&mirror_row/1)
+  def build_grid(%Identicon.Image{hex: hex} = image) do
+    grid =
+      hex
+      |> Enum.chunk_every(3, 3, :discard)
+      |> Enum.map(&mirror_row/1)
+      |> List.flatten
+      |> Enum.with_index
+
+    %Identicon.Image{image | grid: grid}
   end
 
   @doc """
