@@ -26,7 +26,7 @@ defmodule Identicon do
   4.- `build_grid` transforms the 16 numbers list into a 5x5 matrix, mirroring
   values.
 
-  5.- `filter_odds_squares' removes the odd squares of the grid.
+  5.- `filter_odds_squares` removes the odd squares of the grid.
 
   6.- Finally, it draws the identicon.
 
