@@ -25,14 +25,27 @@ defmodule Identicon do
 
   4.- `build_grid` transforms the 16 numbers list into a 5x5 matrix, mirroring
   values.
+
+  5.- `filter_odds_squares' removes the odd squares of the grid.
   """
   def main(input) do
     input
     |> hash_input
     |> pick_color
     |> build_grid
+    |> filter_odd_squares
   end
 
+  @doc """
+  `filter_odd_squares` method filters the grid to return the even values.
+  """
+  def filter_odd_squares(%Identicon.Image{grid: grid} = image) do
+    grid = Enum.filter grid, fn({code, _index}) ->
+      rem(code, 2) == 0
+    end
+
+    %Identicon.Image{image | grid: grid}
+  end
   @doc """
   This function processes the 15 first values of the image and tranfoms them into 25,
   following the given requirements.
