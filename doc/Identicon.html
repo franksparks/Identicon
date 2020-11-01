@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="identicon v0.1.0">
+
+    <title>Identicon — identicon v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+
+    <script src="dist/sidebar_items-eb6cb81153.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="api-reference.html" class="sidebar-projectName">
+identicon
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+Identicon <small class="app-vsn">(identicon v0.1.0)</small>
+
+      </h1>
+
+
+        <section id="moduledoc">
+<p>  Documentation for <a href="#content"><code class="inline">Identicon</code></a>.
+  This program would ingest a string and turn it into a 5x5 squares identicon.
+Mirrored on the center.</p><p>  It will not be randomly generated, as the string will be converted into the identicon.
+Introducing the same string, the same identicon should be generated.</p><p>  By doing so, there is no need to store the image, as the identicon can be
+generated every time on the fly.</p>
+        </section>
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#build_grid/1">build_grid(image)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>  This function processes the 15 first values of the image and tranfoms them into 25,
+following the given requirements.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#build_pixel_map/1">build_pixel_map(image)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>  In order to draw the grid, some calculations have to be done
+to pinpoint the different squares.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#draw_image/1">draw_image(image)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>  This function draws the identicon.
+  It creates an empty image and then fills it according
+  to the color and the location of the even squares.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#filter_odd_squares/1">filter_odd_squares(image)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>  <code class="inline">filter_odd_squares</code> method filters the grid to return the even values.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#hash_input/1">hash_input(input)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>  <code class="inline">Hash_input</code> function converts a given <code class="inline">input</code> into a MD5 hash, and then
+transforms that unique numbers into a string of 16 numbers, using the pipe operator.
+  The string of numbers is returned as a struct.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#main/1">main(input)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>  Main method consists on a pipeline, which processes the original string
+<code class="inline">input</code>, and transforms it several times until the identicon is generated.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mirror_row/1">mirror_row(row)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>  This function appends two values to the list, to mirror the values as per needed
+for the identicon.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pick_color/1">pick_color(image)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>  This function gets the first thee values of the string, the RGB values.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#save_image/2">save_image(image, input)</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>  This method stores the identicon generated.</p></div>
+
+</div>
+
+  </div>
+
+        </section>
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions
+          </h1>
+          <div class="functions-list">
+<section class="detail" id="build_grid/1">
+
+  <div class="detail-header">
+    <a href="#build_grid/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">build_grid(image)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>  This function processes the 15 first values of the image and tranfoms them into 25,
+following the given requirements.</p><ul><li><p>To do so, first of all 'image' struct is accessed, in particular to the hex property,
+the list of 16 hex numbers.</p></li><li><p>That list is divided into several lists of 3 elements, discarting the last value.</p></li><li><p><code class="inline">mirror_row</code> method is referenced to append the values to mirror every row.</p></li><li><p>Flattening the list of lists, one single list with the 25 values will be returned.</p></li><li><p><code class="inline">Enum.with_index</code> gets every element in the list and returns a tuple with
+the element and its index.</p></li></ul>
+  </section>
+</section>
+<section class="detail" id="build_pixel_map/1">
+
+  <div class="detail-header">
+    <a href="#build_pixel_map/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">build_pixel_map(image)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>  In order to draw the grid, some calculations have to be done
+to pinpoint the different squares.</p>
+  </section>
+</section>
+<section class="detail" id="draw_image/1">
+
+  <div class="detail-header">
+    <a href="#draw_image/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">draw_image(image)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>  This function draws the identicon.
+  It creates an empty image and then fills it according
+  to the color and the location of the even squares.</p>
+  </section>
+</section>
+<section class="detail" id="filter_odd_squares/1">
+
+  <div class="detail-header">
+    <a href="#filter_odd_squares/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">filter_odd_squares(image)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>  <code class="inline">filter_odd_squares</code> method filters the grid to return the even values.</p>
+  </section>
+</section>
+<section class="detail" id="hash_input/1">
+
+  <div class="detail-header">
+    <a href="#hash_input/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">hash_input(input)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>  <code class="inline">Hash_input</code> function converts a given <code class="inline">input</code> into a MD5 hash, and then
+transforms that unique numbers into a string of 16 numbers, using the pipe operator.
+  The string of numbers is returned as a struct.</p><h2 id="hash_input/1-example" class="section-heading">
+  <a href="#hash_input/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt;</span><span class="nc">Identicon</span><span class="o">.</span><span class="n">hash_input</span><span class="p" data-group-id="2172070425-1">(</span><span class="s">&quot;transistor&quot;</span><span class="p" data-group-id="2172070425-1">)</span><span class="w">
+</span><span class="p" data-group-id="2172070425-2">%</span><span class="nc" data-group-id="2172070425-2">Identicon.Image</span><span class="p" data-group-id="2172070425-2">{</span><span class="ss">hex</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2172070425-3">[</span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span><span class="w"> </span><span class="mi">215</span><span class="p">,</span><span class="w"> </span><span class="mi">138</span><span class="p">,</span><span class="w"> </span><span class="mi">244</span><span class="p">,</span><span class="w"> </span><span class="mi">154</span><span class="p">,</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w"> </span><span class="mi">188</span><span class="p">,</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w"> </span><span class="mi">122</span><span class="p">,</span><span class="w">
+</span><span class="mi">216</span><span class="p">,</span><span class="w"> </span><span class="mi">251</span><span class="p">,</span><span class="w"> </span><span class="mi">177</span><span class="p">,</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w"> </span><span class="mi">225</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p" data-group-id="2172070425-3">]</span><span class="p" data-group-id="2172070425-2">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="main/1">
+
+  <div class="detail-header">
+    <a href="#main/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">main(input)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>  Main method consists on a pipeline, which processes the original string
+<code class="inline">input</code>, and transforms it several times until the identicon is generated.</p><p>1.- <code class="inline">input</code> will be set as the first argument on the pipeline.</p><p>2.- <code class="inline">hash_input</code> method will be triggered, to transform the <code class="inline">input</code>
+string into a 16 numbers string.</p><p>3.- <code class="inline">pick_color</code> uses the first 3 numbers of the string to set the color of
+the identicon, as RGB values.</p><p>4.- <code class="inline">build_grid</code> transforms the 16 numbers list into a 5x5 matrix, mirroring
+values.</p><p>5.- <code class="inline">filter_odds_squares</code> removes the odd squares of the grid.</p><p>6.- Finally, it draws the identicon.</p><p>7.- And save the image.</p>
+  </section>
+</section>
+<section class="detail" id="mirror_row/1">
+
+  <div class="detail-header">
+    <a href="#mirror_row/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mirror_row(row)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>  This function appends two values to the list, to mirror the values as per needed
+for the identicon.</p>
+  </section>
+</section>
+<section class="detail" id="pick_color/1">
+
+  <div class="detail-header">
+    <a href="#pick_color/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pick_color(image)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>  This function gets the first thee values of the string, the RGB values.</p><ul><li><p>By pattern matching, the first 3 values of <code class="inline">image</code> are stored.</p></li><li><p>The underscore on <code class="inline">_tail</code> avoid warning messages to be displayed due to
+the fact tail is not being used anywhere.</p></li><li><p><code class="inline">color</code> returns a tuple with RGB.</p></li></ul><h2 id="pick_color/1-example" class="section-heading">
+  <a href="#pick_color/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="c1"># iex&gt;Identicon.pick_color(%Identicon.Image{hex:</span><span class="w">
+</span><span class="c1"># [170, 160, 215, 138, 244, 154, 47, 188, 47, 122, 216, 251, 177, 29, 225, 170]})</span><span class="w">
+</span><span class="c1"># [170, 160, 215]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="save_image/2">
+
+  <div class="detail-header">
+    <a href="#save_image/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">save_image(image, input)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>  This method stores the identicon generated.</p>
+  </section>
+</section>
+
+          </div>
+        </section>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+  </body>
+</html>
