@@ -5,7 +5,7 @@ defmodule Identicon.Image do
   @doc """
   Is stores a list of numbers as a struct with the following properties:
   - `hex` (hexadecimal) -> with default value `nil`.
-  - etc.
+  - `color` -> color of the identicon.
   """
-  defstruct hex: nil
+  defstruct hex: nil, color: nil
 end
