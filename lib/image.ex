@@ -3,7 +3,9 @@ defmodule Identicon.Image do
   This module will hold our struct.
   """
   @doc """
-  Is stores a list of numbers as a struct, with default value `nil`.
+  Is stores a list of numbers as a struct with the following properties:
+  - `hex` (hexadecimal) -> with default value `nil`.
+  - etc.
   """
   defstruct hex: nil
 end

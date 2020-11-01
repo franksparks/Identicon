@@ -15,13 +15,31 @@ defmodule Identicon do
 
   1.- `input` will be set as the first argument on the pipeline.
 
-  2.- `hash_input` method will be triggered, to transform the `input` string into a 16 numers string.
-  
+  2.- `hash_input` method will be triggered, to transform the `input` string into a 16 numbers string.
+
   3.-
   """
   def main(input) do
     input
     |> hash_input
+    |> pick_color
+  end
+
+  @doc """
+    This function gets the first thee values of the string, the RGB values.
+
+    By pattern matching, the first 3 values of `image` are stored.
+
+    The underscore on `_tail` avoid warning messages to be displayed due to the fact tail is not being used anywhere.
+
+    ## Example
+        iex>Identicon.pick_color(%Identicon.Image{hex: [170, 160, 215, 138, 244, 154, 47, 188, 47, 122, 216, 251, 177, 29, 225, 170]})
+        [170, 160, 215]
+
+  """
+  def pick_color(image) do
+    %Identicon.Image{hex: [r, g, b | _tail]} = image
+    [r, g ,b]
   end
 
   @doc """
@@ -38,4 +56,6 @@ defmodule Identicon do
 
     %Identicon.Image{hex: hex}
   end
+
+
 end
