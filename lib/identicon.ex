@@ -58,9 +58,10 @@ defmodule Identicon do
   def draw_image(%Identicon.Image{color: color, pixel_map: pixel_map}) do
     image = :egd.create(250, 250)
     fill = :egd.color(color)
-    Enum.each pixel_map, fn({start, stop}) ->
+
+    Enum.each(pixel_map, fn {start, stop} ->
       :egd.filledRectangle(image, start, stop, fill)
-    end
+    end)
 
     :egd.render(image)
   end
@@ -70,29 +71,32 @@ defmodule Identicon do
   to pinpoint the different squares.
   """
   def build_pixel_map(%Identicon.Image{grid: grid} = image) do
-    pixel_map = Enum.map grid, fn({_code, index}) ->
-      horizontal = rem(index, 5) * 50
-      vertical = div(index, 5) * 50
+    pixel_map =
+      Enum.map(grid, fn {_code, index} ->
+        horizontal = rem(index, 5) * 50
+        vertical = div(index, 5) * 50
 
-      top_left = {horizontal, vertical}
-      bottom_right = {horizontal + 50, vertical + 50}
+        top_left = {horizontal, vertical}
+        bottom_right = {horizontal + 50, vertical + 50}
 
-      {top_left, bottom_right}
-    end
+        {top_left, bottom_right}
+      end)
 
-    %Identicon.Image{image | pixel_map: pixel_map }
+    %Identicon.Image{image | pixel_map: pixel_map}
   end
 
   @doc """
     `filter_odd_squares` method filters the grid to return the even values.
   """
   def filter_odd_squares(%Identicon.Image{grid: grid} = image) do
-    grid = Enum.filter grid, fn({code, _index}) ->
-      rem(code, 2) == 0
-    end
+    grid =
+      Enum.filter(grid, fn {code, _index} ->
+        rem(code, 2) == 0
+      end)
 
     %Identicon.Image{image | grid: grid}
   end
+
   @doc """
     This function processes the 15 first values of the image and tranfoms them into 25,
   following the given requirements.
@@ -114,8 +118,8 @@ defmodule Identicon do
       hex
       |> Enum.chunk_every(3, 3, :discard)
       |> Enum.map(&mirror_row/1)
-      |> List.flatten
-      |> Enum.with_index
+      |> List.flatten()
+      |> Enum.with_index()
 
     %Identicon.Image{image | grid: grid}
   end
@@ -160,10 +164,10 @@ defmodule Identicon do
       216, 251, 177, 29, 225, 170]}
   """
   def hash_input(input) do
-    hex = :crypto.hash(:md5,input)
-    |> :binary.bin_to_list
+    hex =
+      :crypto.hash(:md5, input)
+      |> :binary.bin_to_list()
 
     %Identicon.Image{hex: hex}
   end
-
 end
